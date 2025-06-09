@@ -4,12 +4,59 @@
 	--font-sans: "Iosevka Web", "sans-serif";
 }
 
+/* Typography System */
+.text-display-1 {
+	@apply text-5xl font-normal;
+}
+.text-display-2 {
+	@apply text-4xl font-normal;
+}
+.text-heading-1 {
+	@apply text-3xl font-medium;
+}
+.text-heading-2 {
+	@apply text-2xl font-medium;
+}
+.text-heading-3 {
+	@apply text-xl font-medium;
+}
+.text-body-lg {
+	@apply text-lg font-normal;
+}
+.text-body {
+	@apply text-base font-normal;
+}
+.text-body-sm {
+	@apply text-sm font-normal;
+}
+.text-code {
+	@apply text-sm font-mono;
+}
+
+/* Status indicators */
+.status-true {
+	@apply bg-green-50 text-green-700 border border-green-200;
+}
+.status-false {
+	@apply bg-red-50 text-red-700 border border-red-200;
+}
+
+/* Layout elements */
+.code-block {
+	@apply bg-gray-100 text-gray-900 font-mono px-3 py-2 rounded;
+}
+.property-card {
+	@apply bg-white border border-gray-200 rounded-lg p-6;
+}
+
 .button {
-	@apply bg-blue-500 hover:bg-black text-white border-black;
-	@apply px-6 border-2;
+	@apply bg-blue-500 hover:bg-blue-600 text-white border border-blue-500;
+	@apply px-6 py-2 rounded transition-colors;
 }
 
 .input {
-	@apply border-blue-500;
-	@apply w-1/2 max-w-md border-2 p-1  outline-none;
+	@apply border-gray-300 bg-white;
+	@apply w-full max-w-xl border px-4 py-2 outline-none rounded;
+	@apply focus:border-blue-500 transition-colors;
+	@apply placeholder:text-gray-500;
 }

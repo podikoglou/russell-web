@@ -1,7 +1,3 @@
 export default function Code({ value }: { value: string }) {
-	return (
-		<>
-			<p className="text-sm">{value}</p>
-		</>
-	);
+	return <code className="text-code text-gray-800">{value}</code>;
 }

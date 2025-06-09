@@ -10,11 +10,11 @@ export default function StatusDisplay({
 	className = "",
 }: StatusDisplayProps) {
 	return (
-		<div className={`flex flex-col items-center gap-2 ${className}`}>
-			<h2 className="text-2xl font-bold">{label}</h2>
+		<div className={`flex items-center justify-between ${className}`}>
+			<span className="text-heading-3 text-gray-700">{label}</span>
 			<div
-				className={`text-xl font-bold px-6 py-3 rounded-lg ${
-					value ? "bg-green-100 text-green-800" : "bg-red-100 text-red-800"
+				className={`text-body px-4 py-2 rounded font-mono ${
+					value ? "status-true" : "status-false"
 				}`}
 			>
 				{value ? "true" : "false"}

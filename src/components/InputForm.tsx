@@ -18,14 +18,19 @@ export default function InputForm() {
 	};
 
 	return (
-		<div className="flex flex-col items-center gap-4">
-			<h1 className="text-4xl">russell</h1>
+		<div className="flex flex-col items-center gap-6">
+			<div className="text-center">
+				<h1 className="text-display-1 font-medium">russell</h1>
+			</div>
 
-			<form onSubmit={onSubmit} className="flex justify-center w-4xl">
+			<form
+				onSubmit={onSubmit}
+				className="flex justify-center w-full max-w-2xl"
+			>
 				<input
 					autoComplete="off"
 					autoCorrect="off"
-					className="input"
+					className="input text-body"
 					type="text"
 					name="input"
 					ref={inputRef}

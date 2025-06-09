@@ -10,21 +10,19 @@ export default function VariableAssignments({
 	}
 
 	return (
-		<div>
-			<h2 className="text-2xl font-bold mb-4">variable assignments</h2>
-			<div className="flex flex-col gap-2">
+		<div className="property-card">
+			<h3 className="text-heading-3 mb-6">variable assignments</h3>
+			<div className="space-y-3">
 				{Object.entries(assignments).map(([key, value]) => (
-					<div key={key} className="flex items-center gap-2">
-						<span className="font-mono">{key}:</span>
-						<span
-							className={`px-2 py-1 rounded text-sm ${
-								value
-									? "bg-green-100 text-green-800"
-									: "bg-red-100 text-red-800"
+					<div key={key} className="flex items-center justify-between">
+						<span className="text-body font-mono text-gray-700">{key}</span>
+						<div
+							className={`text-body-sm px-3 py-1 rounded font-mono ${
+								value ? "status-true" : "status-false"
 							}`}
 						>
 							{value ? "true" : "false"}
-						</span>
+						</div>
 					</div>
 				))}
 			</div>

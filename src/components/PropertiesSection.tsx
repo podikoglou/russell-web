@@ -1,5 +1,3 @@
-import StatusDisplay from "./StatusDisplay";
-
 interface Property {
 	name: string;
 	value: boolean;
@@ -18,15 +16,23 @@ export default function PropertiesSection({
 	}
 
 	return (
-		<div>
-			<h2 className="text-2xl font-bold mb-4">logical properties</h2>
-			<div className="flex flex-wrap gap-4">
+		<div className="property-card">
+			<h3 className="text-heading-3 mb-6">logical properties</h3>
+
+			<div className="space-y-4">
 				{properties.map((property) => (
-					<div key={property.name} className="flex flex-col items-center gap-2">
-						<StatusDisplay label={property.name} value={property.value} />
-						{property.description && (
-							<p className="text-sm text-gray-600">{property.description}</p>
-						)}
+					<div
+						key={property.name}
+						className="flex items-center justify-between"
+					>
+						<span className="text-body text-gray-700">{property.name}</span>
+						<div
+							className={`text-body-sm px-3 py-1 rounded font-mono ${
+								property.value ? "status-true" : "status-false"
+							}`}
+						>
+							{property.value ? "true" : "false"}
+						</div>
 					</div>
 				))}
 			</div>

@@ -10,8 +10,8 @@ function LoadingState() {
 	return (
 		<>
 			<InputForm />
-			<div className="flex flex-col items-center my-8">
-				<h2 className="text-2xl">loading engine...</h2>
+			<div className="flex flex-col items-center my-12">
+				<p className="text-body text-gray-600">loading engine...</p>
 			</div>
 		</>
 	);
@@ -19,10 +19,13 @@ function LoadingState() {
 
 function ErrorState({ error }: { error: string }) {
 	return (
-		<>
-			<h1 className="text-4xl">whoops!</h1>
-			<h2 className="text-2xl">{error}</h2>
-		</>
+		<div className="flex flex-col items-center gap-6">
+			<InputForm />
+			<div className="text-center">
+				<p className="text-heading-2 text-red-600 mb-2">error</p>
+				<p className="text-body text-gray-600">{error}</p>
+			</div>
+		</div>
 	);
 }
 
@@ -41,22 +44,35 @@ export default function ResultPage() {
 	}
 
 	if (!input) {
-		return <ErrorState error="you forgot to give input!" />;
+		return <ErrorState error="no input provided" />;
 	}
 
 	return (
 		<>
 			<InputForm />
-			<div className="flex flex-col items-center my-8 gap-12">
-				<h2 className="text-2xl font-mono bg-gray-100 px-4 py-2 rounded">
-					{input}
-				</h2>
+			<div className="max-w-4xl mx-auto my-12 space-y-8">
+				{/* Input Display */}
+				<div className="text-center">
+					<div className="code-block text-heading-3 max-w-2xl mx-auto">
+						{input}
+					</div>
+				</div>
 
+				{/* Variable Assignments */}
 				<VariableAssignments assignments={assignments} />
 
-				{result !== null && <StatusDisplay label="result" value={result} />}
+				{/* Main Results */}
+				<div className="space-y-8">
+					{/* Evaluation Result */}
+					{result !== null && (
+						<div className="property-card">
+							<StatusDisplay label="evaluation" value={result} />
+						</div>
+					)}
 
-				<PropertiesSection properties={properties} />
+					{/* Properties Section */}
+					<PropertiesSection properties={properties} />
+				</div>
 			</div>
 		</>
 	);
