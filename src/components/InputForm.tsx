@@ -3,7 +3,7 @@ import { useLocation } from "wouter";
 
 export default function InputForm() {
 	const [, setLocation] = useLocation();
-	const inputRef = useRef<HTMLInputElement | undefined>(null);
+	const inputRef = useRef<HTMLInputElement | null>(null);
 
 	const onSubmit = (event: FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
