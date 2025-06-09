@@ -18,27 +18,29 @@ export default function InputForm() {
 	};
 
 	return (
-		<div className="flex flex-col items-center gap-6">
-			<div className="text-center">
-				<Link to="/" className="text-display-1 inline-block">
-					russell
-				</Link>
-			</div>
+		<div className="w-full max-w-4xl mx-auto mb-16">
+			<div className="flex flex-col items-center gap-6">
+				<div className="text-center">
+					<Link to="/" className="text-display-1 inline-block">
+						russell
+					</Link>
+				</div>
 
-			<form
-				onSubmit={onSubmit}
-				className="flex justify-center w-full max-w-2xl"
-			>
-				<input
-					autoComplete="off"
-					autoCorrect="off"
-					className="input text-body"
-					type="text"
-					name="input"
-					ref={inputRef}
-					placeholder="enter a logical proposition"
-				/>
-			</form>
+				<form
+					onSubmit={onSubmit}
+					className="flex justify-center w-full max-w-2xl"
+				>
+					<input
+						autoComplete="off"
+						autoCorrect="off"
+						className="input text-body"
+						type="text"
+						name="input"
+						ref={inputRef}
+						placeholder="enter a logical proposition"
+					/>
+				</form>
+			</div>
 		</div>
 	);
 }

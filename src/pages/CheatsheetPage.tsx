@@ -13,7 +13,7 @@ export default function CheatsheetPage() {
 	return (
 		<>
 			<InputForm />
-			<div className="max-w-2xl mx-auto my-16 space-y-12">
+			<div className="max-w-2xl mx-auto space-y-12">
 				<h2 className="text-heading-2 mb-4">russell cheatsheet</h2>
 
 				<div className="property-card">

@@ -50,7 +50,7 @@ export default function ResultPage() {
 	return (
 		<>
 			<InputForm />
-			<div className="max-w-4xl mx-auto my-12 space-y-8">
+			<div className="max-w-4xl mx-auto space-y-8">
 				{/* Input Display */}
 				<div className="text-center">
 					<div className="code-block text-heading-3 max-w-2xl mx-auto">

@@ -33,7 +33,7 @@ export default function IndexPage() {
 		<>
 			<InputForm />
 
-			<div className="max-w-4xl mx-auto my-16 space-y-12">
+			<div className="max-w-4xl mx-auto space-y-12">
 				{/* Introduction */}
 				<div className="text-center">
 					<h2 className="text-heading-2 mb-4">examples</h2>
