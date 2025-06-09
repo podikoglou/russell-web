@@ -58,5 +58,7 @@ export function useEngineEvaluation(input: string | null): EvaluationResult {
 		throw new Error("Truth table is undefined");
 	}
 
+	console.log(truthTable);
+
 	return { properties, truthTable, error };
 }
