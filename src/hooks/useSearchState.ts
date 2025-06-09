@@ -1,4 +1,4 @@
-import { useSearchParams } from "wouter";
+import { useSearch } from "@tanstack/react-router";
 
 export interface SearchState {
 	input: string | null;
@@ -6,17 +6,16 @@ export interface SearchState {
 }
 
 export function useSearchState(): SearchState {
-	const [searchParams] = useSearchParams();
+	const search = useSearch({ strict: false });
 
-	const input = searchParams.get("input");
+	const input = search.input || null;
 
 	const assignments: Record<string, boolean> = {};
 
-	for (const key of searchParams.keys()) {
+	for (const [key, value] of Object.entries(search)) {
 		if (!isValidAssignmentKey(key)) continue;
 
-		const value = searchParams.get(key);
-		const booleanValue = parseBooleanValue(value);
+		const booleanValue = parseBooleanValue(value as string);
 
 		if (booleanValue !== null) {
 			assignments[key] = booleanValue;

@@ -1,4 +1,4 @@
-import { Link } from "wouter";
+import { Link } from "@tanstack/react-router";
 
 export default function Header() {
 	return (
@@ -7,9 +7,6 @@ export default function Header() {
 				<ul className="flex gap-4 justify-center">
 					<li>
 						<Link to="/">russell</Link>
-					</li>
-					<li>
-						<Link to="/docs">docs</Link>
 					</li>
 
 					<li>

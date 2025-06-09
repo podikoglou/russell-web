@@ -1,8 +1,8 @@
+import { useNavigate } from "@tanstack/react-router";
 import { type FormEvent, useRef } from "react";
-import { useLocation } from "wouter";
 
 export default function InputForm() {
-	const [, setLocation] = useLocation();
+	const navigate = useNavigate();
 	const inputRef = useRef<HTMLInputElement | null>(null);
 
 	const onSubmit = (event: FormEvent<HTMLFormElement>) => {
@@ -14,7 +14,7 @@ export default function InputForm() {
 
 		if (value.trim().length === 0) return;
 
-		setLocation(`/p?input=${value}`);
+		navigate({ to: "/p", search: { input: value } });
 	};
 
 	return (

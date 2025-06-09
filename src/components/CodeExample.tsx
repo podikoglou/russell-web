@@ -1,3 +1,4 @@
+import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 import Code from "./Code";
 
@@ -19,9 +20,9 @@ export default function CodeExample({
 			}
 			className="bg-gray-100 px-2 py-1 rounded-md"
 		>
-			<a href={`/p?input=${encodeURIComponent(value)}`}>
+			<Link to="/p" search={{ input: value }}>
 				<Code value={value} />
-			</a>
+			</Link>
 
 			{hovered && (
 				<div
