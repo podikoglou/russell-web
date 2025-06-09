@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+@theme {
+    --font-display: "Iosevka Web", "sans-serif";
+}
+
+.button {
+    @apply bg-blue-500 hover:bg-black text-white border-black;
+    @apply px-6 border-2;
+}
+
+.input {
+    @apply border-blue-500;
+    @apply w-1/2 max-w-md border-2 p-1  outline-none;
+}
