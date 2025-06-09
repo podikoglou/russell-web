@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import type { TruthTable } from "russell_engine";
 import { useEngine } from "../context/EngineContext";
 
 interface Property {
@@ -10,11 +11,15 @@ interface Property {
 interface EvaluationResult {
 	properties: Property[];
 	error: string | undefined;
+	truthTable: TruthTable;
 }
 
 export function useEngineEvaluation(input: string | null): EvaluationResult {
 	const { engine } = useEngine();
+
 	const [properties, setProperties] = useState<Property[]>([]);
+	const [truthTable, setTruthTable] = useState<TruthTable | null>(null);
+
 	const [error, setError] = useState<string | undefined>(undefined);
 
 	useEffect(() => {
@@ -39,6 +44,8 @@ export function useEngineEvaluation(input: string | null): EvaluationResult {
 				{ name: "contingency", value: engine.check_contingency(input) },
 			]);
 
+			setTruthTable(engine.compute_truth_table(input));
+
 			setError(undefined);
 		} catch (e) {
 			setError(String(e));
@@ -46,5 +53,10 @@ export function useEngineEvaluation(input: string | null): EvaluationResult {
 		}
 	}, [engine, input]);
 
-	return { properties, error };
+	// gosh
+	if (!truthTable) {
+		throw new Error("Truth table is undefined");
+	}
+
+	return { properties, truthTable, error };
 }
