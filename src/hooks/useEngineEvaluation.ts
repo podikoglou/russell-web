@@ -15,49 +15,47 @@ interface EvaluationResult {
 
 export function useEngineEvaluation(input: string | null): EvaluationResult {
 	const { engine } = useEngine();
-
-	const [properties, setProperties] = useState<Property[]>([]);
-	const [truthTable, setTruthTable] = useState<any | null>(null);
-
-	const [error, setError] = useState<string | undefined>(undefined);
+	const [state, setState] = useState<EvaluationResult>({
+		properties: [],
+		error: undefined,
+		truthTable: null,
+	});
 
 	useEffect(() => {
 		if (!engine || !input) {
-			setProperties([]);
-			setError(undefined);
+			setState({
+				properties: [],
+				error: undefined,
+				truthTable: null,
+			});
 			return;
 		}
 
 		try {
-			// if (input) {
-			// 	const evalResult = engine.eval(input);
+			// Handle all operations that might fail
+			const tautology = engine.check_tautology(input);
+			const contradiction = engine.check_contradiction(input);
+			const contingency = engine.check_contingency(input);
+			const table = engine.compute_truth_table(input);
 
-			// 	setResult(evalResult);
-			// 	setProperties([]);
-			// }
-
-			// check for properties (right now, just tautology)
-			setProperties([
-				{ name: "tautology", value: engine.check_tautology(input) },
-				{ name: "contradiction", value: engine.check_contradiction(input) },
-				{ name: "contingency", value: engine.check_contingency(input) },
-			]);
-
-			setTruthTable(engine.compute_truth_table(input));
-
-			setError(undefined);
+			// Only update state if all operations succeeded
+			setState({
+				properties: [
+					{ name: "tautology", value: tautology },
+					{ name: "contradiction", value: contradiction },
+					{ name: "contingency", value: contingency },
+				],
+				truthTable: table,
+				error: undefined,
+			});
 		} catch (e) {
-			setError(String(e));
-			setProperties([]);
+			setState({
+				properties: [],
+				truthTable: null,
+				error: String(e),
+			});
 		}
 	}, [engine, input]);
 
-	// gosh
-	if (!truthTable) {
-		throw new Error("Truth table is undefined");
-	}
-
-	console.log(truthTable);
-
-	return { properties, truthTable, error };
+	return state;
 }
