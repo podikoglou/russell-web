@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import type { TruthTable } from "russell_engine";
 import { useEngine } from "../context/EngineContext";
 
 interface Property {
@@ -11,14 +10,14 @@ interface Property {
 interface EvaluationResult {
 	properties: Property[];
 	error: string | undefined;
-	truthTable: TruthTable;
+	truthTable: any;
 }
 
 export function useEngineEvaluation(input: string | null): EvaluationResult {
 	const { engine } = useEngine();
 
 	const [properties, setProperties] = useState<Property[]>([]);
-	const [truthTable, setTruthTable] = useState<TruthTable | null>(null);
+	const [truthTable, setTruthTable] = useState<any | null>(null);
 
 	const [error, setError] = useState<string | undefined>(undefined);
 
