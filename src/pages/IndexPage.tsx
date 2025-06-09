@@ -4,11 +4,15 @@ export default function IndexPage() {
       <div className="flex flex-col items-center gap-4">
         <h1 className="text-4xl">russell</h1>
 
-        <input
-          className="input"
-          type="text"
-          placeholder="enter a logical proposition"
-        />
+        <form action="/" className="flex justify-center w-4xl">
+          <input
+            autoFocus={true}
+            className="input"
+            type="text"
+            name="input"
+            placeholder="enter a logical proposition"
+          />
+        </form>
       </div>
     </>
   );
