@@ -6,7 +6,6 @@ import {
 import { Outlet, createRootRoute, createRoute } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 import { z } from "zod";
-import Header from "./components/Header";
 import { EngineProvider } from "./context/EngineContext";
 import IndexPage from "./pages/IndexPage";
 import ResultPage from "./pages/ResultPage";
@@ -15,7 +14,6 @@ import ResultPage from "./pages/ResultPage";
 const rootRoute = createRootRoute({
 	component: () => (
 		<EngineProvider>
-			<Header />
 			<div className="container mx-auto my-8">
 				<Outlet />
 			</div>
