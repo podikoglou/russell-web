@@ -18,8 +18,10 @@ function LoadingState() {
 
 function ErrorState({ error }: { error: string }) {
 	return (
-		<div className="flex flex-col items-center gap-6">
-			<InputForm />
+		<div className="w-full flex flex-col items-center gap-6">
+			<div className="w-full">
+				<InputForm />
+			</div>
 			<div className="text-center">
 				<p className="text-heading-2 text-red-600 mb-2">error</p>
 				<p className="text-body text-gray-600">{error}</p>
