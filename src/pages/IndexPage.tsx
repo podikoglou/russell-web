@@ -1,3 +1,5 @@
+import { Link } from "@tanstack/react-router";
+import { FaBook, FaGithub, FaYoutube } from "react-icons/fa";
 import CodeExample from "../components/CodeExample";
 import InputForm from "../components/InputForm";
 
@@ -61,14 +63,44 @@ export default function IndexPage() {
 					})}
 				</div>
 
+				{/* Links */}
+				<div className="text-center border-t border-gray-200 pt-12">
+					<div className="flex justify-center gap-8">
+						<a
+							href="https://github.com/podikoglou/russell"
+							className="flex items-center gap-2 text-body text-gray-600 hover:text-gray-800"
+						>
+							<FaGithub className="w-5 h-5" />
+							<span>github</span>
+						</a>
+						<Link
+							to="/cheatsheet"
+							className="flex items-center gap-2 text-body text-gray-600 hover:text-gray-800"
+						>
+							<FaBook className="w-5 h-5" />
+							<span>cheatsheet</span>
+						</Link>
+						<a
+							href="https://youtu.be/av64lVQBvg0"
+							className="flex items-center gap-2 text-body text-gray-600 hover:text-gray-800"
+						>
+							<FaYoutube className="w-5 h-5" />
+							<span>demo</span>
+						</a>
+					</div>
+				</div>
+
 				{/* Quote */}
-				<div className="text-center border-t border-gray-200 pt-8">
+				<div className="text-center border-t border-gray-200 pt-12 mt-12">
 					<p className="text-body-sm text-gray-500 italic">
-						"the whole of mathematics consists in the organization of a series
-						of aids to the imagination in the process of reasoning"
+						"although this may seem a paradox, all exact science is dominated by
+						the idea of approximation."
 					</p>
 					<p className="text-body-sm text-gray-400 mt-2">
-						— alfred north whitehead
+						—{" "}
+						<a href="https://en.wikipedia.org/wiki/Bertrand_Russell">
+							bertrand russell
+						</a>
 					</p>
 				</div>
 			</div>
