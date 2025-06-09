@@ -19,7 +19,9 @@ export default function CodeExample({
       }
       className="bg-gray-100 px-2 py-1 rounded-md"
     >
-      <Code value={value} />
+      <a href={`/p?input=${encodeURIComponent(value)}`}>
+        <Code value={value} />
+      </a>
 
       {hovered && (
         <div
