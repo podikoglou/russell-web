@@ -42,14 +42,8 @@ export function useEngineEvaluation(
       }
 
       // check for properties (right now, just tautology)
-      const isTautology = engine.check_tautology(input);
-
       setProperties([
-        {
-          name: "tautology",
-          value: isTautology,
-          description: "always true regardless of variable assignments",
-        },
+        { name: "tautology", value: engine.check_tautology(input) },
       ]);
 
       setError(undefined);

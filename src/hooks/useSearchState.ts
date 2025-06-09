@@ -10,13 +10,28 @@ export function useSearchState(): SearchState {
 
   const input = searchParams.get("input");
 
-  // Load assignments from search params
   const assignments: Record<string, boolean> = {};
+
   for (const key of searchParams.keys()) {
-    if (key !== "input") {
-      assignments[key] = searchParams.get(key) === "true";
+    if (!isValidAssignmentKey(key)) continue;
+
+    const value = searchParams.get(key);
+    const booleanValue = parseBooleanValue(value);
+    
+    if (booleanValue !== null) {
+      assignments[key] = booleanValue;
     }
   }
 
   return { input, assignments };
+}
+
+function isValidAssignmentKey(key: string): boolean {
+  return key.length === 1 && key !== "input";
+}
+
+function parseBooleanValue(value: string | null): boolean | null {
+  if (value === "true") return true;
+  if (value === "false") return false;
+  return null;
 }
