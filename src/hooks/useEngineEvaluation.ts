@@ -35,6 +35,8 @@ export function useEngineEvaluation(input: string | null): EvaluationResult {
 			// check for properties (right now, just tautology)
 			setProperties([
 				{ name: "tautology", value: engine.check_tautology(input) },
+				{ name: "contradiction", value: engine.check_contradiction(input) },
+				{ name: "contingency", value: engine.check_contingency(input) },
 			]);
 
 			setError(undefined);
