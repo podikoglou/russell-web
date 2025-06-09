@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-    --font-display: "Iosevka Web", "sans-serif";
+    --font-sans: "Iosevka Web", "sans-serif";
 }
 
 .button {
