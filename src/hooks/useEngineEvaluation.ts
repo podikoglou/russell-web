@@ -13,10 +13,7 @@ interface EvaluationResult {
 	error: string | undefined;
 }
 
-export function useEngineEvaluation(
-	input: string | null,
-	assignments: Record<string, boolean>,
-): EvaluationResult {
+export function useEngineEvaluation(input: string | null): EvaluationResult {
 	const { engine } = useEngine();
 	const [result, setResult] = useState<boolean | null>(null);
 	const [properties, setProperties] = useState<Property[]>([]);
@@ -31,11 +28,8 @@ export function useEngineEvaluation(
 		}
 
 		try {
-			const hasAssignments = Object.keys(assignments).length > 0;
-
-			// if there are assignments, evaluate the proposition
-			if (hasAssignments) {
-				const evalResult = engine.eval(input, assignments);
+			if (input) {
+				const evalResult = engine.eval(input);
 
 				setResult(evalResult);
 				setProperties([]);
@@ -52,7 +46,7 @@ export function useEngineEvaluation(
 			setResult(null);
 			setProperties([]);
 		}
-	}, [engine, input, JSON.stringify(assignments)]);
+	}, [engine, input]);
 
 	return { result, properties, error };
 }
