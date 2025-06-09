@@ -3,7 +3,7 @@ export default function InputForm() {
     <div className="flex flex-col items-center gap-4">
       <h1 className="text-4xl">russell</h1>
 
-      <form action="/" className="flex justify-center w-4xl">
+      <form action="/p" className="flex justify-center w-4xl">
         <input
           autoFocus={true}
           autoComplete="off"
