@@ -6,6 +6,8 @@ export default function InputForm() {
       <form action="/" className="flex justify-center w-4xl">
         <input
           autoFocus={true}
+          autoComplete="off"
+          autoCorrect="off"
           className="input"
           type="text"
           name="input"
