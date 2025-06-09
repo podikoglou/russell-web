@@ -1,6 +1,5 @@
 import InputForm from "../components/InputForm";
 import PropertiesSection from "../components/PropertiesSection";
-import StatusDisplay from "../components/StatusDisplay";
 import { useEngine } from "../context/EngineContext";
 import { useEngineEvaluation } from "../hooks/useEngineEvaluation";
 import { useSearchState } from "../hooks/useSearchState";
@@ -33,7 +32,7 @@ function ErrorState({ error }: { error: string }) {
 export default function ResultPage() {
 	const { isLoading, error: engineError } = useEngine();
 	const { input } = useSearchState();
-	const { result, properties, error } = useEngineEvaluation(input);
+	const { properties, error } = useEngineEvaluation(input);
 
 	// Early returns for error states
 	if (isLoading) {
@@ -61,13 +60,6 @@ export default function ResultPage() {
 
 				{/* Main Results */}
 				<div className="space-y-8">
-					{/* Evaluation Result */}
-					{result !== null && (
-						<div className="property-card">
-							<StatusDisplay label="evaluation" value={result} />
-						</div>
-					)}
-
 					{/* Properties Section */}
 					<PropertiesSection properties={properties} />
 				</div>
