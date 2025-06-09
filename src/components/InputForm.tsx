@@ -20,10 +20,7 @@ export default function InputForm() {
 	return (
 		<div className="flex flex-col items-center gap-6">
 			<div className="text-center">
-				<Link
-					to="/"
-					className="text-display-1 font-medium inline-block hover:text-gray-800"
-				>
+				<Link to="/" className="text-display-1 inline-block">
 					russell
 				</Link>
 			</div>

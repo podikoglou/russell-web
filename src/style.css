@@ -1,7 +1,8 @@
 @import "tailwindcss";
 
 @theme {
-	--font-sans: "Iosevka Web", "sans-serif";
+	--font-sans: "Fira Sans", "sans-serif";
+	--font-mono: "Fira Mono", "monospace";
 }
 
 /* Typography System */
