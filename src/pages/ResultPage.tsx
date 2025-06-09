@@ -1,76 +1,47 @@
-import { useSearchParams } from "wouter";
 import InputForm from "../components/InputForm";
+import VariableAssignments from "../components/VariableAssignments";
+import StatusDisplay from "../components/StatusDisplay";
+import PropertiesSection from "../components/PropertiesSection";
 import { useEngine } from "../context/EngineContext";
-import { useState, useEffect } from "react";
+import { useSearchState } from "../hooks/useSearchState";
+import { useEngineEvaluation } from "../hooks/useEngineEvaluation";
+
+function LoadingState() {
+  return (
+    <>
+      <InputForm />
+      <div className="flex flex-col items-center my-8">
+        <h2 className="text-2xl">loading engine...</h2>
+      </div>
+    </>
+  );
+}
+
+function ErrorState({ error }: { error: string }) {
+  return (
+    <>
+      <h1 className="text-4xl">whoops!</h1>
+      <h2 className="text-2xl">{error}</h2>
+    </>
+  );
+}
 
 export default function ResultPage() {
-  const { engine, isLoading, error: engineError } = useEngine();
-  const [searchParams, _] = useSearchParams();
-  const [error, setError] = useState<string | undefined>(undefined);
-  const [result, setResult] = useState<boolean | null>(null);
-
-  const input = searchParams.get("input");
-
-  // Load assignments from search params
-  const assignments: Record<string, boolean> = {};
-  for (const key of searchParams.keys()) {
-    if (key !== "input") {
-      assignments[key] = searchParams.get(key) === "true";
-    }
-  }
-
-  // Evaluate proposition when engine and input are ready
-  useEffect(() => {
-    if (!engine || !input) return;
-
-    try {
-      // You were passing {} instead of assignments!
-      const evalResult = engine.eval(input, assignments);
-      setResult(evalResult);
-      setError(undefined);
-    } catch (e) {
-      setError(String(e));
-      setResult(null);
-    }
-  }, [engine, input, JSON.stringify(assignments)]); // Re-run when assignments change
+  const { isLoading, error: engineError } = useEngine();
+  const { input, assignments } = useSearchState();
+  const { result, properties, error } = useEngineEvaluation(input, assignments);
 
   // Early returns for error states
   if (isLoading) {
-    return (
-      <>
-        <InputForm />
-        <div className="flex flex-col items-center my-8">
-          <h2 className="text-2xl">loading engine...</h2>
-        </div>
-      </>
-    );
+    return <LoadingState />;
   }
 
   if (engineError || error) {
-    return (
-      <>
-        <h1 className="text-4xl">whoops!</h1>
-        <h2 className="text-2xl">{engineError || error}</h2>
-      </>
-    );
+    return <ErrorState error={engineError || error || "Unknown error"} />;
   }
 
   if (!input) {
-    return (
-      <>
-        <h1 className="text-4xl">whoops!</h1>
-        <h2 className="text-2xl">you forgot to give input!</h2>
-      </>
-    );
-  }
-
-  if (!engine) {
-    return (
-      <>
-        <h1 className="text-4xl">whoops!</h1>
-        <h2 className="text-2xl">engine not available</h2>
-      </>
-    );
+    return <ErrorState error="you forgot to give input!" />;
   }
 
   return (
@@ -81,42 +52,13 @@ export default function ResultPage() {
           {input}
         </h2>
 
-        {Object.keys(assignments).length > 0 && (
-          <div>
-            <h2 className="text-2xl font-bold mb-4">variable assignments</h2>
-            <ul className="space-y-2">
-              {Object.entries(assignments).map(([key, value]) => (
-                <li key={key} className="flex items-center gap-2">
-                  <span className="font-mono">{key}:</span>
-                  <span
-                    className={`px-2 py-1 rounded text-sm ${
-                      value
-                        ? "bg-green-100 text-green-800"
-                        : "bg-red-100 text-red-800"
-                    }`}
-                  >
-                    {value ? "true" : "false"}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
+        <VariableAssignments assignments={assignments} />
 
         {result !== null && (
-          <div className="text-center">
-            <h2 className="text-2xl font-bold mb-2">result</h2>
-            <div
-              className={`text-xl font-bold px-6 py-3 rounded-lg ${
-                result
-                  ? "bg-green-100 text-green-800"
-                  : "bg-red-100 text-red-800"
-              }`}
-            >
-              {result ? "true" : "false"}
-            </div>
-          </div>
+          <StatusDisplay label="result" value={result} />
         )}
+
+        <PropertiesSection properties={properties} />
       </div>
     </>
   );

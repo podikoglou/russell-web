@@ -7,10 +7,8 @@
         "@tailwindcss/vite": "^4.1.8",
         "react": "^19.1.0",
         "react-dom": "^19.1.0",
-        "russell_engine": "^0.1.0",
+        "russell_engine": "0.2.0",
         "tailwindcss": "^4.1.8",
-        "vite-plugin-top-level-await": "^1.5.0",
-        "vite-plugin-wasm": "^3.4.1",
         "wouter": "^3.7.1",
       },
       "devDependencies": {
@@ -25,6 +23,8 @@
         "typescript": "~5.8.3",
         "typescript-eslint": "^8.30.1",
         "vite": "^6.3.5",
+        "vite-plugin-top-level-await": "^1.5.0",
+        "vite-plugin-wasm": "^3.4.1",
       },
     },
   },
@@ -467,7 +467,7 @@
 
     "run-parallel": ["run-parallel@1.2.0", "", { "dependencies": { "queue-microtask": "^1.2.2" } }, "sha512-5l4VyZR86LZ/lDxZTR6jqL8AFE2S0IFLMP26AbjsLVADxHdhB/c0GUsH+y39UfCi3dzz8OlQuPmnaJOMoDHQBA=="],
 
-    "russell_engine": ["russell_engine@0.1.0", "", {}, "sha512-ZFPXfGFw47weu2C9lIqdlqwzdWKBJ95GeGQGjwydB5mQ+k+lr/kzLyWJx5+tOoUpTQiJwqggAgftWN6fMdPxWA=="],
+    "russell_engine": ["russell_engine@0.2.0", "", {}, "sha512-8inCzakntdsaxWQz54L0e+R7L7tNBrtexwAt6CtewwEf4JJeT0z/BNls+NxNfJkncgUHmwIXxvy6vmGQL7QYTA=="],
 
     "scheduler": ["scheduler@0.26.0", "", {}, "sha512-NlHwttCI/l5gCPR3D1nNXtWABUmBwvZpEQiD4IXSbIDq8BzLIK/7Ir5gTFSGZDUu37K5cMNp0hFtzO38sC7gWA=="],
 
