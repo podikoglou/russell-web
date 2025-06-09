@@ -7,6 +7,7 @@ import { Outlet, createRootRoute, createRoute } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 import { z } from "zod";
 import { EngineProvider } from "./context/EngineContext";
+import CheatsheetPage from "./pages/CheatsheetPage";
 import IndexPage from "./pages/IndexPage";
 import ResultPage from "./pages/ResultPage";
 
@@ -39,8 +40,19 @@ const resultRoute = createRoute({
 	}),
 });
 
+// Create the cheatsheet route
+const cheatsheetRoute = createRoute({
+	getParentRoute: () => rootRoute,
+	path: "/cheatsheet",
+	component: CheatsheetPage,
+});
+
 // Create the route tree
-const routeTree = rootRoute.addChildren([indexRoute, resultRoute]);
+const routeTree = rootRoute.addChildren([
+	indexRoute,
+	resultRoute,
+	cheatsheetRoute,
+]);
 
 // Create a hash history instance
 const hashHistory = createHashHistory();
