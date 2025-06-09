@@ -1,13 +1,15 @@
+import { Link } from "wouter";
+
 export default function Header() {
   return (
     <header>
       <nav>
         <ul className="flex gap-4 justify-center">
           <li>
-            <a href="/">russell</a>
+            <Link to="/">russell</Link>
           </li>
           <li>
-            <a href="/docs">docs</a>
+            <Link to="/docs">docs</Link>
           </li>
 
           <li>
