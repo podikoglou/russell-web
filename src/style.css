@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 @theme {
-	--font-sans: "Fira Sans", "sans-serif";
-	--font-mono: "Fira Mono", "monospace";
+	--font-sans: "Recursive", "sans-serif";
+	--font-mono: "Cascadia Code", "monospace";
 }
 
 /* Typography System */
