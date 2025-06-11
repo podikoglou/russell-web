@@ -32,13 +32,14 @@ export default function TruthTable({
 							{variables.map((varName) => (
 								<th
 									key={varName}
-									className="pb-2 px-3 text-left text-gray-600 font-medium"
+									className="pb-2 px-3 text-left text-gray-600 font-medium text-code"
 								>
 									{varName}
 								</th>
 							))}
+
 							{/* Result column */}
-							<th className="pb-2 px-3 text-left text-gray-600 font-medium">
+							<th className="pb-2 px-3 text-left text-gray-600 font-medium text-code">
 								{proposition}
 							</th>
 						</tr>
@@ -50,7 +51,7 @@ export default function TruthTable({
 								{variables.map((varName) => (
 									<td
 										key={`${rowIndex}-${varName}`}
-										className="py-2 px-3 font-mono"
+										className="py-2 px-3 font-code"
 									>
 										{row[varName] ? "1" : "0"}
 									</td>

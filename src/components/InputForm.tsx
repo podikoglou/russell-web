@@ -33,7 +33,7 @@ export default function InputForm() {
 					<input
 						autoComplete="off"
 						autoCorrect="off"
-						className="input text-body"
+						className="input text-code"
 						type="text"
 						name="input"
 						ref={inputRef}
