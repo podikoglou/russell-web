@@ -10,7 +10,7 @@ function LoadingState() {
 		<>
 			<InputForm />
 			<div className="flex flex-col items-center my-12">
-				<p className="text-body text-gray-600">loading engine...</p>
+				<p className="text-body text-secondary">loading engine...</p>
 			</div>
 		</>
 	);
@@ -24,7 +24,7 @@ function ErrorState({ error }: { error: string }) {
 			</div>
 			<div className="text-center">
 				<p className="text-heading-2 text-red-600 mb-2">error</p>
-				<p className="text-body text-gray-600">{error}</p>
+				<p className="text-body text-secondary">{error}</p>
 			</div>
 		</div>
 	);

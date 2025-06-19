@@ -6,7 +6,9 @@ import {
 import { Outlet, createRootRoute, createRoute } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 import { z } from "zod";
+import ThemeToggle from "./components/ThemeToggle";
 import { EngineProvider } from "./context/EngineContext";
+import { ThemeProvider } from "./context/ThemeContext";
 import CheatsheetPage from "./pages/CheatsheetPage";
 import IndexPage from "./pages/IndexPage";
 import ResultPage from "./pages/ResultPage";
@@ -14,12 +16,17 @@ import ResultPage from "./pages/ResultPage";
 // Create the root route
 const rootRoute = createRootRoute({
 	component: () => (
-		<EngineProvider>
-			<div className="container mx-auto my-8">
-				<Outlet />
-			</div>
-			<TanStackRouterDevtools />
-		</EngineProvider>
+		<ThemeProvider>
+			<EngineProvider>
+				<div className="min-h-screen bg-white dark:bg-gray-950 text-gray-700 dark:text-gray-200 transition-colors">
+					<ThemeToggle />
+					<div className="container mx-auto py-8">
+						<Outlet />
+					</div>
+				</div>
+				<TanStackRouterDevtools />
+			</EngineProvider>
+		</ThemeProvider>
 	),
 });
 

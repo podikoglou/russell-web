@@ -27,24 +27,24 @@ export default function TruthTable({
 			<div className="overflow-x-auto">
 				<table className="w-full text-body-sm">
 					<thead>
-						<tr className="border-b border-gray-200">
+						<tr className="border-b border-primary">
 							{/* Variable columns */}
 							{variables.map((varName) => (
 								<th
 									key={varName}
-									className="pb-2 px-3 text-left text-gray-600 font-medium text-code"
+									className="pb-2 px-3 text-left text-secondary font-medium text-code"
 								>
 									{varName}
 								</th>
 							))}
 
 							{/* Result column */}
-							<th className="pb-2 px-3 text-left text-gray-600 font-medium text-code">
+							<th className="pb-2 px-3 text-left text-secondary font-medium text-code">
 								{proposition}
 							</th>
 						</tr>
 					</thead>
-					<tbody className="divide-y divide-gray-200">
+					<tbody className="divide-y divide-primary">
 						{truthTable.map((row, rowIndex) => (
 							<tr key={rowIndex}>
 								{/* Variable values */}
@@ -58,7 +58,7 @@ export default function TruthTable({
 								))}
 								{/* Result value */}
 								<td
-									className={`py-2 px-3 font-mono ${row.result ? "text-green-700" : "text-red-700"}`}
+									className={`py-2 px-3 font-mono ${row.result ? "text-green-700 dark:text-green-300" : "text-red-700 dark:text-red-300"}`}
 								>
 									{row.result ? "1" : "0"}
 								</td>

@@ -37,7 +37,7 @@ export default function IndexPage() {
 				{/* Introduction */}
 				<div className="text-center">
 					<h2 className="text-heading-2 mb-4">examples</h2>
-					<p className="text-body text-gray-600">
+					<p className="text-body text-secondary">
 						click any proposition to analyze it
 					</p>
 				</div>
@@ -51,7 +51,7 @@ export default function IndexPage() {
 								{examples.map((example) => {
 									return (
 										<div key={example.name} className="property-card">
-											<h3 className="text-body-sm text-gray-600 mb-3">
+											<h3 className="text-body-sm text-secondary mb-3">
 												{example.name}
 											</h3>
 											<CodeExample value={example.proposition} />
@@ -64,25 +64,25 @@ export default function IndexPage() {
 				</div>
 
 				{/* Links */}
-				<div className="text-center border-t border-gray-200 pt-12">
+				<div className="text-center border-t border-primary pt-12">
 					<div className="flex justify-center gap-8">
 						<a
 							href="https://github.com/podikoglou/russell"
-							className="flex items-center gap-2 text-body text-gray-600 hover:text-gray-800"
+							className="flex items-center gap-2 text-body text-link"
 						>
 							<FaGithub className="w-5 h-5" />
 							<span>github</span>
 						</a>
 						<Link
 							to="/cheatsheet"
-							className="flex items-center gap-2 text-body text-gray-600 hover:text-gray-800"
+							className="flex items-center gap-2 text-body text-link"
 						>
 							<FaBook className="w-5 h-5" />
 							<span>cheatsheet</span>
 						</Link>
 						<a
 							href="https://youtu.be/av64lVQBvg0"
-							className="flex items-center gap-2 text-body text-gray-600 hover:text-gray-800"
+							className="flex items-center gap-2 text-body text-link"
 						>
 							<FaYoutube className="w-5 h-5" />
 							<span>demo</span>
@@ -91,12 +91,12 @@ export default function IndexPage() {
 				</div>
 
 				{/* Quote */}
-				<div className="text-center border-t border-gray-200 pt-12 mt-12">
-					<p className="text-body-sm text-gray-500 italic">
+				<div className="text-center border-t border-primary pt-12 mt-12">
+					<p className="text-body-sm text-muted italic">
 						"although this may seem a paradox, all exact science is dominated by
 						the idea of approximation."
 					</p>
-					<p className="text-body-sm text-gray-400 mt-2">
+					<p className="text-body-sm text-subtle mt-2">
 						—{" "}
 						<a href="https://en.wikipedia.org/wiki/Bertrand_Russell">
 							bertrand russell

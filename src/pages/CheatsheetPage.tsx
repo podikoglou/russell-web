@@ -23,7 +23,7 @@ export default function CheatsheetPage() {
 								key={item.russell}
 								className="flex items-center justify-between"
 							>
-								<span className="text-body text-gray-600">{item.logic}</span>
+								<span className="text-body text-secondary">{item.logic}</span>
 								<CodeExample value={item.russell} />
 							</div>
 						))}

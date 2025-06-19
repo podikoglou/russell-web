@@ -25,7 +25,7 @@ export default function PropertiesSection({
 						key={property.name}
 						className="flex items-center justify-between"
 					>
-						<span className="text-body text-gray-700">{property.name}</span>
+						<span className="text-body text-primary">{property.name}</span>
 						<div
 							className={`text-body-sm px-3 py-1 rounded font-mono ${
 								property.value ? "status-true" : "status-false"
